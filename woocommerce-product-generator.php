@@ -46,7 +46,7 @@ if ( !defined( 'WPG_LOG' ) ) {
 }
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
-	require_once __DIR__ . '/includes/class-wc-product-generator-cli.php';
+	require_once __DIR__ . '/includes/class-woocommerce-product-generator-cli.php';
 	WP_CLI::add_command( 'product-generator', 'WC_Product_Generator_CLI' );
 }
 
@@ -710,10 +710,16 @@ class WooCommerce_Product_Generator {
 				if ( $url !== null ) {
 					$context = stream_context_create( ['http' => ['ignore_errors' => true]] );
 					$unsplash_image = file_get_contents( $url, false, $context );
-					if ( isset( $http_response_header[0] ) ) {
+
+					if (function_exists('http_get_last_response_headers')) {
+						$headers = http_get_last_response_headers();
+					} else {
+						$headers = $http_response_header ?? [];
+					}
+					if ( isset( $headers[0] ) ) {
 						if (
-							strpos( $http_response_header[0], '200' ) !== false || // OK
-							strpos( $http_response_header[0], '302' ) !== false // Found
+							strpos( $headers[0], '200' ) !== false || // OK
+							strpos( $headers[0], '302' ) !== false // Found
 						) {
 							$unsplash_success = true;
 						}
