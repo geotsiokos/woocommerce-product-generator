@@ -45,6 +45,11 @@ if ( !defined( 'WPG_LOG' ) ) {
 	define( 'WPG_LOG', true );
 }
 
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	require_once __DIR__ . '/includes/class-wc-product-generator-cli.php';
+	WP_CLI::add_command( 'product-generator', 'WC_Product_Generator_CLI' );
+}
+
 // @phpcs:ignore WordPress.WP.AlternativeFunctions.rand_rand
 
 /**
@@ -89,6 +94,7 @@ class WooCommerce_Product_Generator {
 			add_action( 'admin_notices', array( __CLASS__, 'min_woo_notice' ) );
 			return false;
 		}
+
 	}
 
 	/**
