@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 
-	class WC_Product_Generator_CLI {
+	class WooCommerce_Product_Generator_CLI {
 
 		/**
 		 * Generates mock products via WooCommerce Product Generator.

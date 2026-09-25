@@ -47,7 +47,7 @@ if ( !defined( 'WPG_LOG' ) ) {
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	require_once __DIR__ . '/includes/class-woocommerce-product-generator-cli.php';
-	WP_CLI::add_command( 'product-generator', 'WC_Product_Generator_CLI' );
+	WP_CLI::add_command( 'product-generator', 'WooCommerce_Product_Generator_CLI' );
 }
 
 // @phpcs:ignore WordPress.WP.AlternativeFunctions.rand_rand
