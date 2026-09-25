@@ -711,7 +711,7 @@ class WooCommerce_Product_Generator {
 					$context = stream_context_create( ['http' => ['ignore_errors' => true]] );
 					$unsplash_image = file_get_contents( $url, false, $context );
 
-					if (function_exists('http_get_last_response_headers')) {
+					if ( function_exists( 'http_get_last_response_headers' ) ) {
 						$headers = http_get_last_response_headers();
 					} else {
 						$headers = $http_response_header ?? [];
