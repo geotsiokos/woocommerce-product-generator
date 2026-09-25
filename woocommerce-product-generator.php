@@ -94,7 +94,6 @@ class WooCommerce_Product_Generator {
 			add_action( 'admin_notices', array( __CLASS__, 'min_woo_notice' ) );
 			return false;
 		}
-
 	}
 
 	/**
